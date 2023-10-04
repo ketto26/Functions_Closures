@@ -6,10 +6,10 @@ import Foundation
 var finalNumber: Int = 1
 func factorial(_ numb: Int) -> Int{
     if numb != 0{
-        for i in 1...numb{
+        for i in 1...numb {
             finalNumber = finalNumber * i
         }
-    }else{
+    } else {
         return finalNumber
     }
     
@@ -28,7 +28,7 @@ print()
  */
 func findFibos(fiboNumber: Int = 20) -> [Int] {
     var numbers = [0, 1]
-    while numbers.count < fiboNumber{
+    while numbers.count < fiboNumber {
         numbers.append((numbers[numbers.count - 1] + numbers[numbers.count - 2]))
     }
     return numbers
@@ -50,7 +50,7 @@ func isPalindrome(_ input: String) -> Bool {
     let characters = Array(inputLowerCased)
     let length = characters.count
     
-    for i in 0..<length/2 {
+    for i in 0..<length / 2 {
         if characters[i] != characters[length - 1 - i] {
             return false
         }
@@ -114,8 +114,8 @@ print()
 /*                  -- 6 --
  შექმენით Closure რომელსაც გადაეცემა რიცხვი და დააბრუნებს ამ რიცხვის ორობით ჩანაწერს.
  */
-let binaryNumber: (Int) -> String = {
-    number in return String(number, radix: 2)
+let binaryNumber: (Int) -> String = { number in
+     String(number, radix: 2)
 }
 print("Binary of \(42) is \(binaryNumber(42))")
 print()
@@ -131,7 +131,7 @@ print()
  შექმენით Closure რომელიც გაფილტრავს(ანუ წაშლის) კენტ რიცხვებს Int-ების Array-დან.
  */
 let removeOdds: ([Int]) -> [Int] = { numbers in
-    return numbers.filter { $0 % 2 == 0 }
+    numbers.filter { $0 % 2 == 0 }
 }
 
 let numbersArray = [2, 4, 5, 7, 9, 8, 3]
@@ -148,7 +148,7 @@ print()
  შექმენით Closure რომელიც დამაპავს(ანუ გააკეთებს ქმედებას ყველა მასივის ელემენტზე) Int-ების Array-ის და თითოეულ ელემენტს გაათმაგებს.
  */
 let makeTenTimesBigger: ([Int]) -> [Int] = { numbers in
-    return numbers.map {$0 * 10}
+    numbers.map {$0 * 10}
 }
 
 let afterTenYears = [22, 35, 87, 91]
@@ -165,7 +165,7 @@ print()
  გამოიყენეთ escaping closure სადაც 3 წამის შემდეგ დაბეჭდავს ჩაწოდებული მასივის ჯამს.
  */
 func thisIsKillingMe(_ numbers: [Int], completion: @escaping (Int) -> Void) {
-    DispatchQueue.global().asyncAfter(deadline: .now() + 3.0){
+    DispatchQueue.global().asyncAfter(deadline: .now() + 3.0) {
         let numbersSum = numbers.reduce(0, +)
         completion(numbersSum)
     }
@@ -187,10 +187,7 @@ print()
  function-ს გადავცეთ String-ების array და დაგვიბრუნოს მხოლოდ კენტი რიცხვების მასივი. გამოიყენეთ high order functions.
  */
 func filterOddNumbers(_ inputArray: [String]) -> [Int] {
-    let filteredArray = inputArray
-        .compactMap { Int($0) }
-        .filter { $0 % 2 != 0 }
-    return filteredArray
+    return inputArray.compactMap { Int($0) }.filter { $0 % 2 != 0 }
 }
 let inputArray = ["23", "16", "26", "3", "6", "9", "7", "12", "91"]
 print(filterOddNumbers(inputArray))
